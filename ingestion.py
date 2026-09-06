@@ -28,3 +28,4 @@ processed["tier"] = processed["Rk"].apply(assign_tier)
 
 print(processed[["season", "Rk", "Squad", "tier"]])
 print(processed["tier"].value_counts().sort_index())
+print(processed["tier"].isna().sum())
