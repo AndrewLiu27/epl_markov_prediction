@@ -29,3 +29,5 @@ Fans can use historical patterns to understand how teams finishing in similar po
 | **D** |        14–17 | Relegation Risk       | Represents lower-table clubs that remain in the Premier League but are relatively close to the relegation positions.              |
 | **E** |        18–20 | Relegated             | Represents clubs finishing in the bottom three positions and therefore relegated from the Premier League.                         |
 | **F** |  Outside EPL | Outside               | Represents clubs in the study population that are not competing in the Premier League during the observed season.                 |
+
+The study begins with the 1995–96 season, when the Premier League adopted its 20-club format, allowing a consistent performance-tier definition across all seasons.
