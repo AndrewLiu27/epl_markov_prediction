@@ -18,6 +18,22 @@ Why would someone interested in the Premier League care about the answer?
 
 Fans can use historical patterns to understand how teams finishing in similar positions have tended to perform in following seasons.
 
+## Study Population
+
+Which clubs will be included in the analysis?
+
+All the club that appeared at least once in the English Premier League during the studied seasons will be included in the analysis.
+
+## Time Period
+
+Which seasons will be analyzed?
+
+Currently, I am planning to study from the season 1995-96 to the season 2025-26.
+
+## Observation Unit
+
+What does one row of the final analytical dataset represent?
+One row in the main analytical dataset represents one club's performance in one season.
 
 ## Performance Tier Definition
 
@@ -30,4 +46,3 @@ Fans can use historical patterns to understand how teams finishing in similar po
 | **E** |        18–20 | Relegated             | Represents clubs finishing in the bottom three positions and therefore relegated from the Premier League.                         |
 | **F** |  Outside EPL | Outside               | Represents clubs in the study population that are not competing in the Premier League during the observed season.                 |
 
-The study begins with the 1995–96 season, when the Premier League adopted its 20-club format, allowing a consistent performance-tier definition across all seasons.
