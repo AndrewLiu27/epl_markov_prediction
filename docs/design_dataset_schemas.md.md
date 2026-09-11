@@ -1,4 +1,4 @@
-# Design the processed dataset schema
+# Design datasets' schemas
 
 ## What would the processed dataset look like?
 
