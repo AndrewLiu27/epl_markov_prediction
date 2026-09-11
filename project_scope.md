@@ -70,5 +70,5 @@ What information do I need for each team-season row in order to assign tiers, id
 ### Derived Variables
 - Tier
 - Spell_ID
-- Current_Tier
+- Current_Tier # For transition calculation, from current_tier to next_tier
 - Next_Tier
