@@ -8,8 +8,53 @@ From 1995-96 season to 2025-26 season. There are total of 31 seasons. So there a
 Schema:
 (Season: str, Squad: str, Rk: int, Tier: str)
 
-### Processed Datasets (Transition Tables):
-The number of the processed datasets would be the number of the teams appeared in the EPL for at least once. We can derive it from the raw datasets. And different team have different number of rows.
-
+### Processed Dataset:
+We can derive it from the raw datasets.
 Schema:
-(Season: str, Squad: str, Rk: int, Tier: str, Spell_id: int)
+Combine all 31 seasons into one long table:
+Season
+Club
+Position
+MP
+W
+D
+L
+GF
+GA
+GD
+Pts
+Tier
+Spell_ID
+
+One row still means one club in one EPL season.
+
+### Derived Transition Dataset:
+Derived from the Processed Dataset, season -> next season (actual transition happens)
+
+Grain: One row = one valid consecutive-season transition within an EPL spell.
+
+Example:
+    Schema:
+        Club
+        Spell_ID
+        Season
+        Current_Tier
+        Next_Season
+        Next_Tier
+
+Club X   1   2018-19   C   2019-20   D
+Club X   1   2019-20   D   2020-21   E
+
+
+## Architecture:
+31 raw season files
+        ↓
+validate + standardize each season
+        ↓
+ONE processed master table
+        ↓
+assign Tier + Spell_ID
+        ↓
+ONE derived transition table
+        ↓
+transition counts / probabilities / Markov analysis
