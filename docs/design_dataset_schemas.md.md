@@ -6,15 +6,8 @@
 From 1995-96 season to 2025-26 season. There are total of 31 seasons. So there are total of 31 seasons' squad performance tables.
 
 Schema:
-(Season: str, Squad: str, Rk: int, Tier: str)
-
-### Processed Dataset:
-We can derive it from the raw datasets.
-Schema:
-Combine all 31 seasons into one long table:
-Season
-Club
-Position
+Rk
+Squad
 MP
 W
 D
@@ -23,8 +16,24 @@ GF
 GA
 GD
 Pts
-Tier
-Spell_ID
+
+### Processed Dataset:
+We can derive it from the raw datasets.
+Schema:
+Combine all 31 seasons into one long table:
+Season   (Added)
+Club     (Altered from Squad)
+Position (Altered from Rk)
+MP
+W
+D
+L
+GF
+GA
+GD
+Pts
+Tier     (Processed from Rk)
+Spell_ID (Processed from Rk, Tier)
 
 One row still means one club in one EPL season.
 
