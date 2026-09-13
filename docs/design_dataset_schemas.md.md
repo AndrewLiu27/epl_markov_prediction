@@ -17,7 +17,7 @@ GA
 GD
 Pts
 
-### Processed Dataset:
+### Processed Master Dataset:
 We can derive it from the raw datasets.
 Schema:
 Combine all 31 seasons into one long table:
@@ -35,24 +35,26 @@ Pts
 Tier     (Processed from Rk)
 Spell_ID (Processed from Rk, Tier)
 
-One row still means one club in one EPL season.
+Grain: One row still means one club in one EPL season.
 
 ### Derived Transition Dataset:
 Derived from the Processed Dataset, season -> next season (actual transition happens)
 
-Grain: One row = one valid consecutive-season transition within an EPL spell.
-
 Example:
     Schema:
-        Club
-        Spell_ID
-        Season
-        Current_Tier
-        Next_Season
-        Next_Tier
+        Club: str
+        Spell_ID: int
+        Season: str
+        Current_Tier: str
+        Next_Season: str
+        Next_Tier: str
 
-Club X   1   2018-19   C   2019-20   D
-Club X   1   2019-20   D   2020-21   E
+Club   Spell_ID   Season   Current_Tier  Next_Season   Next_Tier
+Club X    1      2018-19       C           2019-20         D
+Club Y    1      2018-19       D           2019-20         D      Contain all *valid transitions* for *all clubs*.
+Club X    1      2019-20       D           2020-21         E
+
+Grain: One row = one valid consecutive-season transition within an EPL spell.
 
 
 ## Architecture:
@@ -67,3 +69,27 @@ assign Tier + Spell_ID
 ONE derived transition table
         ↓
 transition counts / probabilities / Markov analysis
+
+## Data Pipeline
+
+Raw seasonal files (Load the raw data)
+        ↓ 
+     Validate (SOP)
+        ↓ 
+Standardize column names (Reasonable)
+        ↓ 
+    Add Season (Tag the season)
+        ↓ 
+Combine seasons (combine all the csv files)
+        ↓ 
+    Assign Tier (Function auto-assign)
+        ↓ 
+ Assign Spell_ID (Function auto-detect and auto-assign)
+        ↓ 
+Processed master dataset (To one master ready to use dataset)
+        ↓ 
+Create valid consecutive-season transitions (according to the spell)
+        ↓ 
+Transition dataset (Easier to refer to when it comes to transition)
+        ↓ 
+Transition probabilities / Markov analysis (Markov Transition Matrix)
