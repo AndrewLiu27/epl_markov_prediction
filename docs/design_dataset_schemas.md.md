@@ -54,7 +54,9 @@ Club X    1      2018-19       C           2019-20         D
 Club Y    1      2018-19       D           2019-20         D      Contain all *valid transitions* for *all clubs*.
 Club X    1      2019-20       D           2020-21         E
 
-Grain: One row = one valid consecutive-season transition within an EPL spell.
+Grain: One row = one valid transition made by one club between two consecutive EPL seasons within the same spell.
+
+If, for example, Arsenal has 25 valid EPL transitions, Arsenal contributes 25 rows. If another club only has 3 valid transitions, it contributes 3 rows. That is, differnt clubs contribute different rows in this transition dataset.
 
 
 ## Architecture:
