@@ -14,6 +14,9 @@ processed_95 = processed_95.rename(columns={'Squad':'Club', 'Rk' : "Position"})
 col = processed_95.pop('Season')
 processed_95.insert(0, 'Season', col)
 
+# Use pop and insert to change the location of column "Club" and "Position"
+col2 = processed_95.pop('Club')
+processed_95.insert(1, 'Club', col2)
 
 # Print out check session:
 print(processed_95.head())
