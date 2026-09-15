@@ -58,6 +58,8 @@ Not every spell ends in E inside the data (The observation window ends while the
 
 A spell begins when a club enters the EPL, either because it is promoted or because it is already presented at the beginning of the study period.
 
+(The spell is for breaking the transition when the team get relegated first and then get promoted back to the EPL. For example, 2022-23: E, 2025-26: C. Spell is used for preventing collecting the transition E -> C)
+
 ## Data Requirements
 
 What information do I need for each team-season row in order to assign tiers, identify spells, and eventually create season-to-season transitions?
