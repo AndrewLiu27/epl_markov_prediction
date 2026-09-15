@@ -32,3 +32,48 @@ bool = previous_season == current_season - 1
 This checks if the seasons can be figured out.
 
 I'll try to combine all the seasons first.
+
+## A cleaner pipeline:
+For each raw season file:
+    ↓
+validate
+    ↓
+add Season from filename
+    ↓
+rename columns
+    ↓
+append to list
+
+After all files are standardized:
+    ↓
+combine into one master DataFrame
+    ↓
+assign Tier
+    ↓
+sort by Club + Season
+    ↓
+assign Spell_ID
+    ↓
+processed master dataset
+
+## Architecture
+31 raw CSV files
+        ↓
+for each file:
+    validate
+    add Season
+    rename columns
+        ↓
+pd.concat(...)
+        ↓
+master DataFrame
+        ↓
+assign Tier
+        ↓
+sort Club + Season
+        ↓
+assign Spell_ID
+        ↓
+processed master dataset
+
+Remember: Anything derived from the file itself must be added before concatenation. Anything derived from relationships between seasons must happen after concatenation.
