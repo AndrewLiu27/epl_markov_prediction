@@ -89,15 +89,20 @@ for file_path in sorted(RAW_DIR.glob("*.csv")): # glob() gives a Path
     else:
         print(f"{file_path.name}: Validation passed")
 
-if all_valid:
-    print("All raw CSV files passed validation.")
-else:
-    print("Some raw CSV files failed validation.")
+if not all_valid:
+    raise ValueError("Raw data validation failed. Pipeline stopped.") # raise ValueError(...) not only prints out a message, but also stops execution.
 
+print("All raw CSV files passed validation.")
+
+# Bifurcation starts from here:
+# validate all raw files -> any problem? -> Yes -> Stop
+#                               |-> No -> Transformation
+
+# Transformation begins here:
 
 # Step by step
 
-# 1. Validate all 31 raw csv files
+# 1. Validate all 31 raw csv files [Checked]
 #   Check the docs/raw_validation_specification.md
 
 # 2. For each raw CSV:
