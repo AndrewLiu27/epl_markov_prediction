@@ -3,10 +3,6 @@ from pathlib import Path
 RAW_DIR = Path("data/raw")
 # e.g.: file_path = RAW_DIR / "1995-96.csv"
 
-# Step by step
-
-# 1. Validate all 31 raw csv files
-#   Check the docs/raw_validation_specification.md
 def validate_raw_season(file_name):
 
     df = pd.read_csv(RAW_DIR / file_name)
@@ -17,7 +13,8 @@ def validate_raw_season(file_name):
     expected_columns = ['Rk', 'Squad', 'MP', 'W', 'D', 'L', 'GF', 'GA', 'GD', 'Pts']
 
     if list(df.columns) != expected_columns:
-        errors.append("Unexpected columns")
+        errors.append(f"Unexpected columns: expected {expected_columns}, got {list(df.columns)}")
+        return errors # Stop early! Checks below rely on the completeness of columns.
 
     # 2. Row / missing-values check
 
@@ -26,21 +23,25 @@ def validate_raw_season(file_name):
         errors.append(f"Unexpected row count: expected 20, got {len(df)}")
 
     # 2.2 No missing-values
-    if df.isna().any().any(): # any() returns whether at least one element evaluates to True over a specific axis. Acting like an "OR" logical operator across the dataset.
-        errors.append("Missing values detected")
+    if df.isna().any().any(): # any() returns whether at least one element evaluates to True over a specific axis(axis = 0 for default, which means checks down the rows of each column). Acting like an "OR" logical operator across the dataset.
+        errors.append("Missing values detected") # df.isna() -> Check for every cell! If missing value, return Ture; Return False, if value exists.
+                                                 # df.isna().any() -> Checks down the row of each column that if any value in that column contain any True?
+                                                 # df.isna().any().any() -> Checks if any value in the result of (if there's any True in each column) contain any True?
+                                                 # We are tranforming 20 * 10 = 200 bool values into 1 single bool value.
+                                                 # That is, True if at least one missing value exists anywhere in the DataFrame
 
     # 3. Uniqueness checks
 
     # 3.1 no duplicated rows check
-    if df.duplicated().any(): # any row
-        errors.append("Duplicated rows detected")
+    if df.duplicated().any(): # df.duplicated(): Return Boolean value for each row, return True when the row is duplicated to previous row(s).
+        errors.append("Duplicated rows detected") # df.duplicated().any(): Returns True if the result contains any True value.
 
     # 3.2 no duplicated Squad check
-    if df["Squad"].duplicated().sum() != 0:
+    if df["Squad"].duplicated().sum() != 0: # df["Squad"].duplicated(): Checks down the row of the column "Squad" and returns True if any duplicated value is found.
         errors.append("Duplicated Squads detected")
 
     # 3.3 no duplicated Rk check
-    if df["Rk"].duplicated().sum() !=0:
+    if df["Rk"].duplicated().sum() != 0:
         errors.append("Duplicated Rk detected")
 
     # 4. Rank validity
@@ -72,11 +73,20 @@ def validate_raw_season(file_name):
     return errors
 
     
-
-
-
 # Test Session:
-validate_raw_season("2000-01.csv")
+errors = validate_raw_season("corrupted_data.csv")
+
+if errors:   # errors should be either an empty list or a list contains string elements. bool([]) is evaluated to be False; bool(["some errors"]) is evaluated to be True
+    print("Validation failed:")
+    for error in errors:
+        print("-", error)
+else:
+    print("Validation passed")
+
+# Step by step
+
+# 1. Validate all 31 raw csv files
+#   Check the docs/raw_validation_specification.md
 
 # 2. For each raw CSV:
 #     - add "Season" column from filename
@@ -93,6 +103,9 @@ validate_raw_season("2000-01.csv")
 # 7. Set final column order and final row order
 
 # 8. Validate the processed master DataFrame
+
+
+# What if one problem interrupt the following validating checks?
 
 
 
