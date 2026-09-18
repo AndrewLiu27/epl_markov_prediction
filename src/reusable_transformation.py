@@ -3,9 +3,9 @@ from pathlib import Path
 RAW_DIR = Path("data/raw")
 # e.g.: file_path = RAW_DIR / "1995-96.csv"
 
-def validate_raw_season(file_name):
+def validate_raw_season(file_path):
 
-    df = pd.read_csv(RAW_DIR / file_name)
+    df = pd.read_csv(file_path) # Change to Path value to depend less on RAW_DIR. OG: (RAW_DIR / file_name) -> Now: (file_path) We use path to make less confusion with name and path
 
     errors = [] # Create a master error list for future output
 
@@ -74,14 +74,26 @@ def validate_raw_season(file_name):
 
     
 # Test Session:
-errors = validate_raw_season("corrupted_data.csv")
+all_valid = True
 
-if errors:   # errors should be either an empty list or a list contains string elements. bool([]) is evaluated to be False; bool(["some errors"]) is evaluated to be True
-    print("Validation failed:")
-    for error in errors:
-        print("-", error)
+for file_path in sorted(RAW_DIR.glob("*.csv")): # glob() gives a Path
+
+    errors = validate_raw_season(file_path) # .name extract the file name instead of the Path("data/raw/1995-96.csv").
+
+    if errors:   # errors should be either an empty list or a list contains string elements. bool([]) is evaluated to be False; bool(["some errors"]) is evaluated to be True
+        all_valid = False # set all_valid metric to False when error encountered
+
+        print(f"{file_path.name}: Validation failed")
+        for error in errors:
+            print(f"  - {error}")
+    else:
+        print(f"{file_path.name}: Validation passed")
+
+if all_valid:
+    print("All raw CSV files passed validation.")
 else:
-    print("Validation passed")
+    print("Some raw CSV files failed validation.")
+
 
 # Step by step
 
