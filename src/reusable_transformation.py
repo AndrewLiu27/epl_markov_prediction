@@ -74,31 +74,58 @@ def validate_raw_season(file_path):
 
     
 # Test Session:
-all_valid = True
+# all_valid = True
 
-for file_path in sorted(RAW_DIR.glob("*.csv")): # glob() gives a Path
+# for file_path in sorted(RAW_DIR.glob("*.csv")): # glob() gives a Path
 
-    errors = validate_raw_season(file_path) # .name extract the file name instead of the Path("data/raw/1995-96.csv").
+#     errors = validate_raw_season(file_path) # .name extract the file name instead of the Path("data/raw/1995-96.csv").
 
-    if errors:   # errors should be either an empty list or a list contains string elements. bool([]) is evaluated to be False; bool(["some errors"]) is evaluated to be True
-        all_valid = False # set all_valid metric to False when error encountered
+#     if errors:   # errors should be either an empty list or a list contains string elements. bool([]) is evaluated to be False; bool(["some errors"]) is evaluated to be True
+#         all_valid = False # set all_valid metric to False when error encountered
 
-        print(f"{file_path.name}: Validation failed")
-        for error in errors:
-            print(f"  - {error}")
-    else:
-        print(f"{file_path.name}: Validation passed")
+#         print(f"{file_path.name}: Validation failed")
+#         for error in errors:
+#             print(f"  - {error}")
+#     else:
+#         print(f"{file_path.name}: Validation passed")
 
-if not all_valid:
-    raise ValueError("Raw data validation failed. Pipeline stopped.") # raise ValueError(...) not only prints out a message, but also stops execution.
+# if not all_valid:
+#     raise ValueError("Raw data validation failed. Pipeline stopped.") # raise ValueError(...) not only prints out a message, but also stops execution.
 
-print("All raw CSV files passed validation.")
+# print("All raw CSV files passed validation.")
 
 # Bifurcation starts from here:
 # validate all raw files -> any problem? -> Yes -> Stop
 #                               |-> No -> Transformation
 
+#
 # Transformation begins here:
+#
+# We create copies to transform. Finally we create a processed master database in the data/processed folder.
+
+processed_seasons = []
+
+for file_path in sorted(RAW_DIR.glob("*.csv")): # This is for reusable bulk process
+
+# Step 2, consider how to add "Season" and rename columns for a single copied csv file (take 1995-96.csv file as an example):
+
+    df = pd.read_csv(file_path) # file path in the parenthesis
+
+    processed = df.copy() # processed is a copy of the DataFrame(1995-96.csv)
+
+    processed["Season"] = file_path.stem # Get the final path component, minus its last suffix. Now it's the csv file names: e.g. 1996-97
+
+    processed = processed.rename(columns={'Squad':'Club', 'Rk' : "Position"}) # rename completed
+
+    processed_seasons.append(processed)
+
+master = pd.concat(processed_seasons, ignore_index=True) # ignore_index = True means to ignore the default csv index
+
+
+
+    
+
+
 
 # Step by step
 
