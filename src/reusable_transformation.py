@@ -109,6 +109,10 @@ processed_seasons = []
 
 expected_columns = ["Position", "Club", "MP", "W", "D", "L", "GF", "GA", "GD", "Pts", "Season"]
 
+EXPECTED_SEASONS = 31
+
+CLUBS_PER_SEASON = 20
+
 for file_path in sorted(RAW_DIR.glob("*.csv")): # This is for reusable bulk process
 
 # Step 2, consider how to add "Season" and rename columns for a single copied csv file (take 1995-96.csv file as an example):
@@ -132,12 +136,31 @@ master = pd.concat(processed_seasons, ignore_index = True) # Concatenation happe
 
 # Master database level validation:
 assert list(master.columns) == expected_columns
-assert len(master) == 620
-assert master["Season"].nunique() == 31
-assert master.groupby("Season").size().eq(20).all() # Every individual season contributes exactly 20 clubs. all() returns True if every value is evaluated to be True
+assert len(master) == EXPECTED_SEASONS * CLUBS_PER_SEASON
+assert master["Season"].nunique() == EXPECTED_SEASONS
+assert master.groupby("Season").size().eq(CLUBS_PER_SEASON).all() # Every individual season contributes exactly 20 clubs. all() returns True if every value is evaluated to be True
 assert not master.duplicated(
     subset = ["Season", "Club"]
 ).any()
+print(master.head())
+print(master.tail())
+print(master.shape)
+
+# Step 4 Applying assign_tier() to master["Position"]
+
+def assign_tier(pos):
+    if 1 <= pos <= 4:
+        return "A"
+    elif 5 <= pos <= 8:
+        return "B"
+    elif 9 <= pos <= 13:
+        return "C"
+    elif 14 <= pos <= 17:
+        return "D"
+    elif 18 <= pos <= 20:
+        return "E"
+    else:
+        return None
 
 
     
