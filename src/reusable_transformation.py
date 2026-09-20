@@ -109,17 +109,19 @@ for file_path in sorted(RAW_DIR.glob("*.csv")): # This is for reusable bulk proc
 
 # Step 2, consider how to add "Season" and rename columns for a single copied csv file (take 1995-96.csv file as an example):
 
-    df = pd.read_csv(file_path) # file path in the parenthesis
-
-    processed = df.copy() # processed is a copy of the DataFrame(1995-96.csv)
+    processed = pd.read_csv(file_path) # df is the loaded dataframe from the original file. Changing it won't change the original file. We directly use processed to store the dataframe.
 
     processed["Season"] = file_path.stem # Get the final path component, minus its last suffix. Now it's the csv file names: e.g. 1996-97
 
-    processed = processed.rename(columns={'Squad':'Club', 'Rk' : "Position"}) # rename completed
+    processed = processed.rename(
+        columns={
+            'Squad':'Club', 'Rk' : "Position"
+        }
+    ) # rename completed. Use inplace = True in the column clause to avoid using assignment
 
     processed_seasons.append(processed)
 
-master = pd.concat(processed_seasons, ignore_index=True) # ignore_index = True means to ignore the default csv index
+master = pd.concat(processed_seasons, ignore_index = True) # ignore_index = True means to ignore the default csv index
 
 
 
