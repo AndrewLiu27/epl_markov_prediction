@@ -103,7 +103,11 @@ def validate_raw_season(file_path):
 #
 # We create copies to transform. Finally we create a processed master database in the data/processed folder.
 
+# Step 2 and Step 3:
+
 processed_seasons = []
+
+expected_columns = ["Position", "Club", "MP", "W", "D", "L", "GF", "GA", "GD", "Pts", "Season"]
 
 for file_path in sorted(RAW_DIR.glob("*.csv")): # This is for reusable bulk process
 
@@ -117,12 +121,23 @@ for file_path in sorted(RAW_DIR.glob("*.csv")): # This is for reusable bulk proc
         columns={
             'Squad':'Club', 'Rk' : "Position"
         }
-    ) # rename completed. Use inplace = True in the column clause to avoid using assignment
+    ) # rename completed. Use inplace = True after the column clause with a comma to avoid using assignment
+
+    # Validate the transformation before accepting the DataFrame
+    assert list(processed.columns) == expected_columns
 
     processed_seasons.append(processed)
 
-master = pd.concat(processed_seasons, ignore_index = True) # ignore_index = True means to ignore the default csv index
+master = pd.concat(processed_seasons, ignore_index = True) # Concatenation happened. And ignore_index = True means to ignore the default csv index
 
+# Master database level validation:
+assert list(master.columns) == expected_columns
+assert len(master) == 620
+assert master["Season"].nunique() == 31
+assert master.groupby("Season").size().eq(20).all() # Every individual season contributes exactly 20 clubs. all() returns True if every value is evaluated to be True
+assert not master.duplicated(
+    subset = ["Season", "Club"]
+).any()
 
 
     
