@@ -371,10 +371,32 @@ assert list(master.columns) == expected_final_columns
 
 # 2. Grain: One row per club-season
 assert not master.duplicated(   # returns a boolean pandas.Series indicating whether each row in the DataFrame is a duplicated of a previous row.
-    subset = ["Season", "Club"] # Scans only these two columns and returns True when detects two row with the same both column values
-).any()                         # impossible to have 2 rows with the same season and same club
+    subset = ["Season", "Club"] # Scans only these two columns and returns True when detects two row with the same both column values (impossible to have 2 rows with the same season and same club)
+).any()                         # .any(): Returns True if any boolean value is True 
+
+# 3. Structure: Expected size
+assert len(master) == EXPECTED_SEASONS * CLUBS_PER_SEASON
+assert master["Season"].nunique() == EXPECTED_SEASONS
+assert master.groupby("Season").size().eq(20).all() # size() counts how many rows are in each season group
+# eq(20) checks if equal to 20 for each season
+
+# 4. Derived columns: Tier + Spell_ID
+assert master["Tier"].isna().sum() == 0
+assert master["Spell_ID"].isna().sum() == 0
+
+assert set(master["Tier"].unique()) == {  # Checks if unique tiers are A B C D E
+    "A", "B", "C", "D", "E"
+}
+
+assert master.groupby("Club")["Spell_ID"].min().eq(1).all()
+
+# 5. Row order: Final ordering
+check = master.sort_values(["Season", "Position"]).reset_index(drop=True)
+
+assert master.reset_index(drop=True).equals(check) # Confirms final dataset is ordered season-by-season and position-by-position
 
 
+# Step 9: Save processed dataset
 
 # Step by step
 
@@ -397,6 +419,9 @@ assert not master.duplicated(   # returns a boolean pandas.Series indicating whe
 
 # 8. Validate the processed master DataFrame
 
+# 9. Save processed master dataset
+
+# 10. Build transition dataset
 
 # What if one problem interrupt the following validating checks?
 
