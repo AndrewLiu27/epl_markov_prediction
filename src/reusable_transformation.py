@@ -487,25 +487,25 @@ transition.to_csv(transition_path, index=False)
 # 1. Validate all 31 raw csv files [Checked]
 #   Check the docs/raw_validation_specification.md
 
-# 2. For each raw CSV:
+# 2. For each raw CSV:              [Checked]
 #     - add "Season" column from filename
 #     - rename columns (Rk -> Position, Squad -> Club)
 
-# 3. Combine all 31 DataFrames into one master DataFrame
+# 3. Combine all 31 DataFrames into one master DataFrame    [Checked]
 
-# 4. Assign Tier column based on Position
+# 4. Assign Tier column based on Position   [Checked]
 
-# 5. Sort master DataFrame by Club + Season (Prepared for Spell_ID)
+# 5. Sort master DataFrame by Club + Season (Prepared for Spell_ID) [Checked]
 
-# 6. Assign Spell_ID based on gaps between consecutive seasons
+# 6. Assign Spell_ID based on gaps between consecutive seasons  [Checked]
 
-# 7. Set final column order and final row order
+# 7. Set final column order and final row order [Checked]
 
-# 8. Validate the processed master DataFrame
+# 8. Validate the processed master DataFrame    [Checked]
 
-# 9. Save processed master dataset
+# 9. Save processed master dataset  [Checked]
 
-# 10. Build transition dataset
+# 10. Build transition dataset  [Checked]
 
 # What if one problem interrupt the following validating checks?
 
