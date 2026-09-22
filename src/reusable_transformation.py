@@ -142,9 +142,9 @@ assert master.groupby("Season").size().eq(CLUBS_PER_SEASON).all() # Every indivi
 assert not master.duplicated(
     subset = ["Season", "Club"]
 ).any()
-print(master.head())
-print(master.tail())
-print(master.shape)
+# print(master.head())
+# print(master.tail())
+# print(master.shape)
 
 # Step 4 Applying assign_tier() to master["Position"]
 
@@ -162,8 +162,217 @@ def assign_tier(pos):
     else:
         return None
 
+master["Tier"] = master["Position"].apply(assign_tier) # Apply assign_tier() to master["Position"]
 
-    
+# Step 4 validation
+assert master["Tier"].isna().sum() == 0
+
+assert set(master["Tier"].unique()) == {"A", "B", "C", "D", "E"}
+
+expected_tier_counts = {
+    "A": 124,
+    "B": 124,
+    "C": 155,
+    "D": 124,
+    "E": 93
+}
+
+assert master["Tier"].value_counts().sort_index().to_dict() == expected_tier_counts
+
+# Step 5: Sort Club + Season to detect the season gap:
+# To show the spell's starting and ending point, we need to show season and club at the same row to determine if the seasons for the same club is consecutive
+
+# Example:
+# Season   Club
+# 2001-02  Arsenal  (spell 1)
+# 2002-03  Arsenal  (spell 1)
+# 2005-06  Arsenal  (spell 2)
+# 2005-06  Chelsea  (spell 1)
+# 2006-07  Chelsea  (spell 1)
+
+
+# master dataset
+#     ↓
+# group each club's rows together
+#     ↓
+# put that club's seasons in chronological order
+#     ↓
+# compare current season with previous season
+#     ↓
+# gap?
+#  ┌───────┴────────┐
+# No               Yes
+# same spell       new spell
+
+season_club = master.sort_values(by=["Club","Season"])
+print(season_club.head())
+print(season_club.tail())
+print(season_club.shape)
+print(master[master["Club"] == "Arsenal"][["Club", "Season"]]) # Pay Attention
+# single bracket: master["Club"] returns a pandas Series
+# 1D Series:
+# 0 Arsenal
+# 1 Chelsea
+# ... 
+# Name: Club
+#  !!!(a Series also has an index and a name)!!!
+# double bracket: master[["Club"]] returns a pandas dataframe
+# 2D dataframe: 
+#     Club 
+# 0 Arsenal 
+# 1 Chelsea 
+# ...  
+# 
+# ["Club", "Season"] is a list
+# boolean mask: master["Club"] == "Arsenal" produces another Series, which contains boolean values:
+# 0 True 
+# 1 False 
+# 2 False 
+# ...
+
+# master[boolean mask]: this means, keep only the rows where the value is True. This filters out the arsenal rows
+# master[boolean mask][["Club", "Season"]]: only the arsenal rows dataframe and we only want 2 columns. 
+# Structure: DataFrame[boolean mask][columns] (columns = ["Club", "Season"])
+# DataFrame[boolean mask] -> DataFrame. DataFrame[columns] -> DataFrame with the selected columns.
+
+# Result:
+# Club       Season
+# Arsenal    1995-96
+# Arsenal    1996-97
+# Arsenal    1997-98
+# ...
+
+# Same result with the .loc usage:
+# master.loc[
+#     master["Club"] == "Arsenal", # selecting row(s)
+#     ["Club", "Season"] # selecting column(s)
+# ]
+# Read .loc as master.loc[rows, columns]
+
+
+
+# Step 6 Assign Spell_ID
+master["Season_Start"] = master["Season"].str[:4].astype(int)
+# print(master["Season_Start"]) # Successful
+
+# We are assigning spell_id. To figure out where does a spell start and ends.
+# Spell starts when there is no consecutive season before. A new spell as a season that is not consecutive to that club's previous EPL season.
+# Spell ends when the club have no consecutive next season or there is no next season. (Optional)
+
+# Then we need club and season_start. And we need to separate clubs repectively.
+
+# Adding a "Previous_Season" column next to the "Season_start" can make it obvious
+
+# Club    Season_Start    Previous_Season
+# Leeds       1995             NaN                 1995 - previous -> NA   (New Spell)
+# Leeds       1996            1995                 1996 - previous -> 1995 (Same Spell)
+# Leeds       2000            1996                 2000 - previous -> 1996 (New Spell)
+# Leeds       2001            2000                 2001 - previous -> 2000 (Same Spell)
+
+# if Season_Start - Previous_Season == 1 then same spell, if not start a new spell for season start
+
+master["Previous_Season"] = master.groupby("Club")["Season_Start"].shift(1) # master -> group rows by Club -> select Season_Start within each group
+# master.groupby("Club") -> group rows by Club
+# master.groupby("Club")["Season_Start"] -> take "Season_Start" within each club
+# master.groupby("Club")["Season_Start"].shift(1) -> moves the values down one row !!!within each club!!! shift(1) means previous row
+
+print(
+    master.loc[
+        master["Club"] == "Leeds United",                      # Rows
+        ["Club", "Season", "Season_Start", "Previous_Season"]  # Columns
+    ]
+)
+
+# Status Check:
+# print(master.head())
+# print(master.tail())
+# print(master.shape)
+
+# Trying to assign Spell_ID:
+master["New_Spell"] = (master["Previous_Season"].isna() | ((master["Season_Start"] - master["Previous_Season"]) != 1))
+# Use "|" or "&" to express logical or, logical and.
+
+# Status Check:
+print(
+    master.loc[
+        master["Club"] == "Leeds United",
+        ["Club", "Season", "Season_Start", "Previous_Season", "New_Spell"]
+    ]
+)
+
+# We need to group by club to avoid increment throughout the whole master dataframe
+master["Spell_ID"] = (master.groupby("Club")["New_Spell"].cumsum()) # Cumulative Sum: True -> 1 / False -> 0
+# Cumulatively added the boolean value at each row. True increments the spell nubmer; False keeps it unchanged
+
+# Status Check:
+print(
+    master.loc[
+        master["Spell_ID"] > 1,
+        ["Club", "Season", "Season_Start", "Previous_Season", "New_Spell", "Spell_ID"]
+    ].head(20)
+)
+
+assert master.groupby("Club")["Spell_ID"].min().eq(1).all() # Checks that every club starts at spell 1
+
+
+# Step 6 completed
+# Step 7 Finalize processed master:
+#   1. Remove helper columns ()
+#   2. Set final column order
+#   3. Decide final row order
+master = master[
+    [
+        "Season",
+        "Club",
+        "Position",
+        "MP",
+        "W",
+        "D",
+        "L",
+        "GF",
+        "GA",
+        "GD",
+        "Pts",
+        "Tier",
+        "Spell_ID"
+    ]
+]
+
+master = master.sort_values(["Season","Position"]).reset_index(drop=True)
+
+# Check:
+# print(master.head())
+# print(master.tail())
+# print(master.shape)
+
+
+# Step 8: Final processed-dataset validation
+
+# 5 areas:
+
+# 1. Final Schema:
+expected_final_columns = [
+    "Season",
+    "Club",
+    "Position",
+    "MP",
+    "W",
+    "D",
+    "L",
+    "GF",
+    "GA",
+    "GD",
+    "Pts",
+    "Tier",
+    "Spell_ID"
+]
+
+assert list(master.columns) == expected_final_columns
+
+# 2. Grain: One row per club-season
+assert not master.duplicated(   # returns a boolean pandas.Series indicating whether each row in the DataFrame is a duplicated of a previous row.
+    subset = ["Season", "Club"] # Scans only these two columns and returns True when detects two row with the same both column values
+).any()                         # impossible to have 2 rows with the same season and same club
 
 
 
