@@ -397,6 +397,17 @@ assert master.reset_index(drop=True).equals(check) # Confirms final dataset is o
 
 
 # Step 9: Save processed dataset
+PROCESSED_DIR = Path("data/processed")
+PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+output_path = PROCESSED_DIR / "epl_master.csv"
+master.to_csv(output_path, index=False) # index=False: pandas row index is not part of the analytical schema
+
+# Output verification:
+saved = pd.read_csv(output_path)
+
+assert saved.shape == master.shape
+assert list(saved.columns) == list(master.columns)
+
 
 # Step by step
 
