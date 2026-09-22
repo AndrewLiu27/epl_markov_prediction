@@ -1,0 +1,511 @@
+Club,Spell_ID,Season,Current_Tier,Next_Season,Next_Tier
+Manchester Utd,1,1995-96,A,1996-97,A
+Newcastle,1,1995-96,A,1996-97,A
+Liverpool,1,1995-96,A,1996-97,A
+Aston Villa,1,1995-96,A,1996-97,B
+Arsenal,1,1995-96,B,1996-97,A
+Everton,1,1995-96,B,1996-97,D
+Blackburn,1,1995-96,B,1996-97,C
+Tottenham,1,1995-96,B,1996-97,C
+Nottingham,1,1995-96,C,1996-97,E
+West Ham,1,1995-96,C,1996-97,D
+Chelsea,1,1995-96,C,1996-97,B
+Middlesbrough,1,1995-96,C,1996-97,E
+Leeds United,1,1995-96,C,1996-97,C
+Wimbledon,1,1995-96,D,1996-97,B
+Sheffield Weds,1,1995-96,D,1996-97,B
+Coventry City,1,1995-96,D,1996-97,D
+Southampton,1,1995-96,D,1996-97,D
+Manchester Utd,1,1996-97,A,1997-98,A
+Newcastle,1,1996-97,A,1997-98,C
+Arsenal,1,1996-97,A,1997-98,A
+Liverpool,1,1996-97,A,1997-98,A
+Aston Villa,1,1996-97,B,1997-98,B
+Chelsea,1,1996-97,B,1997-98,A
+Sheffield Weds,1,1996-97,B,1997-98,D
+Wimbledon,1,1996-97,B,1997-98,D
+Leicester City,1,1996-97,C,1997-98,C
+Tottenham,1,1996-97,C,1997-98,D
+Leeds United,1,1996-97,C,1997-98,B
+Derby County,1,1996-97,C,1997-98,C
+Blackburn,1,1996-97,C,1997-98,B
+West Ham,1,1996-97,D,1997-98,B
+Everton,1,1996-97,D,1997-98,D
+Southampton,1,1996-97,D,1997-98,C
+Coventry City,1,1996-97,D,1997-98,C
+Arsenal,1,1997-98,A,1998-99,A
+Manchester Utd,1,1997-98,A,1998-99,A
+Liverpool,1,1997-98,A,1998-99,B
+Chelsea,1,1997-98,A,1998-99,A
+Leeds United,1,1997-98,B,1998-99,A
+Blackburn,1,1997-98,B,1998-99,E
+Aston Villa,1,1997-98,B,1998-99,B
+West Ham,1,1997-98,B,1998-99,B
+Derby County,1,1997-98,C,1998-99,B
+Leicester City,1,1997-98,C,1998-99,C
+Coventry City,1,1997-98,C,1998-99,D
+Southampton,1,1997-98,C,1998-99,D
+Newcastle,1,1997-98,C,1998-99,C
+Tottenham,1,1997-98,D,1998-99,C
+Wimbledon,1,1997-98,D,1998-99,D
+Sheffield Weds,1,1997-98,D,1998-99,C
+Everton,1,1997-98,D,1998-99,D
+Manchester Utd,1,1998-99,A,1999-00,A
+Arsenal,1,1998-99,A,1999-00,A
+Chelsea,1,1998-99,A,1999-00,B
+Leeds United,1,1998-99,A,1999-00,A
+West Ham,1,1998-99,B,1999-00,C
+Aston Villa,1,1998-99,B,1999-00,B
+Liverpool,1,1998-99,B,1999-00,A
+Derby County,1,1998-99,B,1999-00,D
+Middlesbrough,2,1998-99,C,1999-00,C
+Leicester City,1,1998-99,C,1999-00,B
+Tottenham,1,1998-99,C,1999-00,C
+Sheffield Weds,1,1998-99,C,1999-00,E
+Newcastle,1,1998-99,C,1999-00,C
+Everton,1,1998-99,D,1999-00,C
+Coventry City,1,1998-99,D,1999-00,D
+Wimbledon,1,1998-99,D,1999-00,E
+Southampton,1,1998-99,D,1999-00,D
+Manchester Utd,1,1999-00,A,2000-01,A
+Arsenal,1,1999-00,A,2000-01,A
+Leeds United,1,1999-00,A,2000-01,A
+Liverpool,1,1999-00,A,2000-01,A
+Chelsea,1,1999-00,B,2000-01,B
+Aston Villa,1,1999-00,B,2000-01,B
+Sunderland,2,1999-00,B,2000-01,B
+Leicester City,1,1999-00,B,2000-01,C
+West Ham,1,1999-00,C,2000-01,D
+Tottenham,1,1999-00,C,2000-01,C
+Newcastle,1,1999-00,C,2000-01,C
+Middlesbrough,2,1999-00,C,2000-01,D
+Everton,1,1999-00,C,2000-01,D
+Coventry City,1,1999-00,D,2000-01,E
+Southampton,1,1999-00,D,2000-01,C
+Derby County,1,1999-00,D,2000-01,D
+Bradford City,1,1999-00,D,2000-01,E
+Manchester Utd,1,2000-01,A,2001-02,A
+Arsenal,1,2000-01,A,2001-02,A
+Liverpool,1,2000-01,A,2001-02,A
+Leeds United,1,2000-01,A,2001-02,B
+Ipswich Town,1,2000-01,B,2001-02,E
+Chelsea,1,2000-01,B,2001-02,B
+Sunderland,2,2000-01,B,2001-02,D
+Aston Villa,1,2000-01,B,2001-02,B
+Charlton Athletic,2,2000-01,C,2001-02,D
+Southampton,1,2000-01,C,2001-02,C
+Newcastle,1,2000-01,C,2001-02,A
+Tottenham,1,2000-01,C,2001-02,C
+Leicester City,1,2000-01,C,2001-02,E
+Middlesbrough,2,2000-01,D,2001-02,C
+West Ham,1,2000-01,D,2001-02,B
+Everton,1,2000-01,D,2001-02,D
+Derby County,1,2000-01,D,2001-02,E
+Arsenal,1,2001-02,A,2002-03,A
+Liverpool,1,2001-02,A,2002-03,B
+Manchester Utd,1,2001-02,A,2002-03,A
+Newcastle,1,2001-02,A,2002-03,A
+Leeds United,1,2001-02,B,2002-03,D
+Chelsea,1,2001-02,B,2002-03,A
+West Ham,1,2001-02,B,2002-03,E
+Aston Villa,1,2001-02,B,2002-03,D
+Tottenham,1,2001-02,C,2002-03,C
+Blackburn,2,2001-02,C,2002-03,B
+Southampton,1,2001-02,C,2002-03,B
+Middlesbrough,2,2001-02,C,2002-03,C
+Fulham,1,2001-02,C,2002-03,D
+Charlton Athletic,2,2001-02,D,2002-03,C
+Everton,1,2001-02,D,2002-03,B
+Bolton,3,2001-02,D,2002-03,D
+Sunderland,2,2001-02,D,2002-03,E
+Manchester Utd,1,2002-03,A,2003-04,A
+Arsenal,1,2002-03,A,2003-04,A
+Newcastle,1,2002-03,A,2003-04,B
+Chelsea,1,2002-03,A,2003-04,A
+Liverpool,1,2002-03,B,2003-04,A
+Blackburn,2,2002-03,B,2003-04,D
+Everton,1,2002-03,B,2003-04,D
+Southampton,1,2002-03,B,2003-04,C
+Manchester City,3,2002-03,C,2003-04,D
+Tottenham,1,2002-03,C,2003-04,D
+Middlesbrough,2,2002-03,C,2003-04,C
+Charlton Athletic,2,2002-03,C,2003-04,B
+Birmingham City,1,2002-03,C,2003-04,C
+Fulham,1,2002-03,D,2003-04,C
+Leeds United,1,2002-03,D,2003-04,E
+Aston Villa,1,2002-03,D,2003-04,B
+Bolton,3,2002-03,D,2003-04,B
+Arsenal,1,2003-04,A,2004-05,A
+Chelsea,1,2003-04,A,2004-05,A
+Manchester Utd,1,2003-04,A,2004-05,A
+Liverpool,1,2003-04,A,2004-05,B
+Newcastle,1,2003-04,B,2004-05,D
+Aston Villa,1,2003-04,B,2004-05,C
+Charlton Athletic,2,2003-04,B,2004-05,C
+Bolton,3,2003-04,B,2004-05,B
+Fulham,1,2003-04,C,2004-05,C
+Birmingham City,1,2003-04,C,2004-05,C
+Middlesbrough,2,2003-04,C,2004-05,B
+Southampton,1,2003-04,C,2004-05,E
+Portsmouth,1,2003-04,C,2004-05,D
+Tottenham,1,2003-04,D,2004-05,C
+Blackburn,2,2003-04,D,2004-05,D
+Manchester City,3,2003-04,D,2004-05,B
+Everton,1,2003-04,D,2004-05,A
+Chelsea,1,2004-05,A,2005-06,A
+Arsenal,1,2004-05,A,2005-06,A
+Manchester Utd,1,2004-05,A,2005-06,A
+Everton,1,2004-05,A,2005-06,C
+Liverpool,1,2004-05,B,2005-06,A
+Bolton,3,2004-05,B,2005-06,B
+Middlesbrough,2,2004-05,B,2005-06,D
+Manchester City,3,2004-05,B,2005-06,D
+Tottenham,1,2004-05,C,2005-06,B
+Aston Villa,1,2004-05,C,2005-06,D
+Charlton Athletic,2,2004-05,C,2005-06,C
+Birmingham City,1,2004-05,C,2005-06,E
+Fulham,1,2004-05,C,2005-06,C
+Newcastle,1,2004-05,D,2005-06,B
+Blackburn,2,2004-05,D,2005-06,B
+Portsmouth,1,2004-05,D,2005-06,D
+West Brom,2,2004-05,D,2005-06,E
+Chelsea,1,2005-06,A,2006-07,A
+Manchester Utd,1,2005-06,A,2006-07,A
+Liverpool,1,2005-06,A,2006-07,A
+Arsenal,1,2005-06,A,2006-07,A
+Tottenham,1,2005-06,B,2006-07,B
+Blackburn,2,2005-06,B,2006-07,C
+Newcastle,1,2005-06,B,2006-07,C
+Bolton,3,2005-06,B,2006-07,B
+West Ham,2,2005-06,C,2006-07,D
+Wigan Athletic,1,2005-06,C,2006-07,D
+Everton,1,2005-06,C,2006-07,B
+Fulham,1,2005-06,C,2006-07,D
+Charlton Athletic,2,2005-06,C,2006-07,E
+Middlesbrough,2,2005-06,D,2006-07,C
+Manchester City,3,2005-06,D,2006-07,D
+Aston Villa,1,2005-06,D,2006-07,C
+Portsmouth,1,2005-06,D,2006-07,C
+Manchester Utd,1,2006-07,A,2007-08,A
+Chelsea,1,2006-07,A,2007-08,A
+Liverpool,1,2006-07,A,2007-08,A
+Arsenal,1,2006-07,A,2007-08,A
+Tottenham,1,2006-07,B,2007-08,C
+Everton,1,2006-07,B,2007-08,B
+Bolton,3,2006-07,B,2007-08,D
+Reading,1,2006-07,B,2007-08,E
+Portsmouth,1,2006-07,C,2007-08,B
+Blackburn,2,2006-07,C,2007-08,B
+Aston Villa,1,2006-07,C,2007-08,B
+Middlesbrough,2,2006-07,C,2007-08,C
+Newcastle,1,2006-07,C,2007-08,C
+Manchester City,3,2006-07,D,2007-08,C
+West Ham,2,2006-07,D,2007-08,C
+Fulham,1,2006-07,D,2007-08,D
+Wigan Athletic,1,2006-07,D,2007-08,D
+Manchester Utd,1,2007-08,A,2008-09,A
+Chelsea,1,2007-08,A,2008-09,A
+Arsenal,1,2007-08,A,2008-09,A
+Liverpool,1,2007-08,A,2008-09,A
+Everton,1,2007-08,B,2008-09,B
+Aston Villa,1,2007-08,B,2008-09,B
+Blackburn,2,2007-08,B,2008-09,D
+Portsmouth,1,2007-08,B,2008-09,D
+Manchester City,3,2007-08,C,2008-09,C
+West Ham,2,2007-08,C,2008-09,C
+Tottenham,1,2007-08,C,2008-09,B
+Newcastle,1,2007-08,C,2008-09,E
+Middlesbrough,2,2007-08,C,2008-09,E
+Wigan Athletic,1,2007-08,D,2008-09,C
+Sunderland,4,2007-08,D,2008-09,D
+Bolton,3,2007-08,D,2008-09,C
+Fulham,1,2007-08,D,2008-09,B
+Manchester Utd,1,2008-09,A,2009-10,A
+Liverpool,1,2008-09,A,2009-10,B
+Chelsea,1,2008-09,A,2009-10,A
+Arsenal,1,2008-09,A,2009-10,A
+Everton,1,2008-09,B,2009-10,B
+Aston Villa,1,2008-09,B,2009-10,B
+Fulham,1,2008-09,B,2009-10,C
+Tottenham,1,2008-09,B,2009-10,A
+West Ham,2,2008-09,C,2009-10,D
+Manchester City,3,2008-09,C,2009-10,B
+Wigan Athletic,1,2008-09,C,2009-10,D
+Stoke City,1,2008-09,C,2009-10,C
+Bolton,3,2008-09,C,2009-10,D
+Portsmouth,1,2008-09,D,2009-10,E
+Blackburn,2,2008-09,D,2009-10,C
+Sunderland,4,2008-09,D,2009-10,C
+Hull City,1,2008-09,D,2009-10,E
+Chelsea,1,2009-10,A,2010-11,A
+Manchester Utd,1,2009-10,A,2010-11,A
+Arsenal,1,2009-10,A,2010-11,A
+Tottenham,1,2009-10,A,2010-11,B
+Manchester City,3,2009-10,B,2010-11,A
+Aston Villa,1,2009-10,B,2010-11,C
+Liverpool,1,2009-10,B,2010-11,B
+Everton,1,2009-10,B,2010-11,B
+Birmingham City,3,2009-10,C,2010-11,E
+Blackburn,2,2009-10,C,2010-11,D
+Stoke City,1,2009-10,C,2010-11,C
+Fulham,1,2009-10,C,2010-11,B
+Sunderland,4,2009-10,C,2010-11,C
+Bolton,3,2009-10,D,2010-11,D
+Wolves,2,2009-10,D,2010-11,D
+Wigan Athletic,1,2009-10,D,2010-11,D
+West Ham,2,2009-10,D,2010-11,E
+Manchester Utd,1,2010-11,A,2011-12,A
+Chelsea,1,2010-11,A,2011-12,B
+Manchester City,3,2010-11,A,2011-12,A
+Arsenal,1,2010-11,A,2011-12,A
+Tottenham,1,2010-11,B,2011-12,A
+Liverpool,1,2010-11,B,2011-12,B
+Everton,1,2010-11,B,2011-12,B
+Fulham,1,2010-11,B,2011-12,C
+Aston Villa,1,2010-11,C,2011-12,D
+Sunderland,4,2010-11,C,2011-12,C
+West Brom,4,2010-11,C,2011-12,C
+Newcastle,2,2010-11,C,2011-12,B
+Stoke City,1,2010-11,C,2011-12,D
+Bolton,3,2010-11,D,2011-12,E
+Blackburn,2,2010-11,D,2011-12,E
+Wigan Athletic,1,2010-11,D,2011-12,D
+Wolves,2,2010-11,D,2011-12,E
+Manchester City,3,2011-12,A,2012-13,A
+Manchester Utd,1,2011-12,A,2012-13,A
+Arsenal,1,2011-12,A,2012-13,A
+Tottenham,1,2011-12,A,2012-13,B
+Newcastle,2,2011-12,B,2012-13,D
+Chelsea,1,2011-12,B,2012-13,A
+Everton,1,2011-12,B,2012-13,B
+Liverpool,1,2011-12,B,2012-13,B
+Fulham,1,2011-12,C,2012-13,C
+West Brom,4,2011-12,C,2012-13,B
+Swansea City,1,2011-12,C,2012-13,C
+Norwich City,2,2011-12,C,2012-13,C
+Sunderland,4,2011-12,C,2012-13,D
+Stoke City,1,2011-12,D,2012-13,C
+Wigan Athletic,1,2011-12,D,2012-13,E
+Aston Villa,1,2011-12,D,2012-13,D
+QPR,2,2011-12,D,2012-13,E
+Manchester Utd,1,2012-13,A,2013-14,B
+Manchester City,3,2012-13,A,2013-14,A
+Chelsea,1,2012-13,A,2013-14,A
+Arsenal,1,2012-13,A,2013-14,A
+Tottenham,1,2012-13,B,2013-14,B
+Everton,1,2012-13,B,2013-14,B
+Liverpool,1,2012-13,B,2013-14,A
+West Brom,4,2012-13,B,2013-14,D
+Swansea City,1,2012-13,C,2013-14,C
+West Ham,3,2012-13,C,2013-14,C
+Norwich City,2,2012-13,C,2013-14,E
+Fulham,1,2012-13,C,2013-14,E
+Stoke City,1,2012-13,C,2013-14,C
+Southampton,2,2012-13,D,2013-14,B
+Aston Villa,1,2012-13,D,2013-14,D
+Newcastle,2,2012-13,D,2013-14,C
+Sunderland,4,2012-13,D,2013-14,D
+Manchester City,3,2013-14,A,2014-15,A
+Liverpool,1,2013-14,A,2014-15,B
+Chelsea,1,2013-14,A,2014-15,A
+Arsenal,1,2013-14,A,2014-15,A
+Everton,1,2013-14,B,2014-15,C
+Tottenham,1,2013-14,B,2014-15,B
+Manchester Utd,1,2013-14,B,2014-15,A
+Southampton,2,2013-14,B,2014-15,B
+Stoke City,1,2013-14,C,2014-15,C
+Newcastle,2,2013-14,C,2014-15,D
+Crystal Palace,3,2013-14,C,2014-15,C
+Swansea City,1,2013-14,C,2014-15,B
+West Ham,3,2013-14,C,2014-15,C
+Sunderland,4,2013-14,D,2014-15,D
+Aston Villa,1,2013-14,D,2014-15,D
+Hull City,2,2013-14,D,2014-15,E
+West Brom,4,2013-14,D,2014-15,C
+Chelsea,1,2014-15,A,2015-16,C
+Manchester City,3,2014-15,A,2015-16,A
+Arsenal,1,2014-15,A,2015-16,A
+Manchester Utd,1,2014-15,A,2015-16,B
+Tottenham,1,2014-15,B,2015-16,A
+Liverpool,1,2014-15,B,2015-16,B
+Southampton,2,2014-15,B,2015-16,B
+Swansea City,1,2014-15,B,2015-16,C
+Stoke City,1,2014-15,C,2015-16,C
+Crystal Palace,3,2014-15,C,2015-16,D
+Everton,1,2014-15,C,2015-16,C
+West Ham,3,2014-15,C,2015-16,B
+West Brom,4,2014-15,C,2015-16,D
+Leicester City,3,2014-15,D,2015-16,A
+Newcastle,2,2014-15,D,2015-16,E
+Sunderland,4,2014-15,D,2015-16,D
+Aston Villa,1,2014-15,D,2015-16,E
+Leicester City,3,2015-16,A,2016-17,C
+Arsenal,1,2015-16,A,2016-17,B
+Tottenham,1,2015-16,A,2016-17,A
+Manchester City,3,2015-16,A,2016-17,A
+Manchester Utd,1,2015-16,B,2016-17,B
+Southampton,2,2015-16,B,2016-17,B
+West Ham,3,2015-16,B,2016-17,C
+Liverpool,1,2015-16,B,2016-17,A
+Stoke City,1,2015-16,C,2016-17,C
+Chelsea,1,2015-16,C,2016-17,A
+Everton,1,2015-16,C,2016-17,B
+Swansea City,1,2015-16,C,2016-17,D
+Watford,3,2015-16,C,2016-17,D
+West Brom,4,2015-16,D,2016-17,C
+Crystal Palace,3,2015-16,D,2016-17,D
+Bournemouth,1,2015-16,D,2016-17,C
+Sunderland,4,2015-16,D,2016-17,E
+Chelsea,1,2016-17,A,2017-18,B
+Tottenham,1,2016-17,A,2017-18,A
+Manchester City,3,2016-17,A,2017-18,A
+Liverpool,1,2016-17,A,2017-18,A
+Arsenal,1,2016-17,B,2017-18,B
+Manchester Utd,1,2016-17,B,2017-18,A
+Everton,1,2016-17,B,2017-18,B
+Southampton,2,2016-17,B,2017-18,D
+Bournemouth,1,2016-17,C,2017-18,C
+West Brom,4,2016-17,C,2017-18,E
+West Ham,3,2016-17,C,2017-18,C
+Leicester City,3,2016-17,C,2017-18,C
+Stoke City,1,2016-17,C,2017-18,E
+Crystal Palace,3,2016-17,D,2017-18,C
+Swansea City,1,2016-17,D,2017-18,E
+Burnley,3,2016-17,D,2017-18,B
+Watford,3,2016-17,D,2017-18,D
+Manchester City,3,2017-18,A,2018-19,A
+Manchester Utd,1,2017-18,A,2018-19,B
+Tottenham,1,2017-18,A,2018-19,A
+Liverpool,1,2017-18,A,2018-19,A
+Chelsea,1,2017-18,B,2018-19,A
+Arsenal,1,2017-18,B,2018-19,B
+Burnley,3,2017-18,B,2018-19,D
+Everton,1,2017-18,B,2018-19,B
+Leicester City,3,2017-18,C,2018-19,C
+Newcastle,3,2017-18,C,2018-19,C
+Crystal Palace,3,2017-18,C,2018-19,C
+Bournemouth,1,2017-18,C,2018-19,D
+West Ham,3,2017-18,C,2018-19,C
+Watford,3,2017-18,D,2018-19,C
+Brighton,1,2017-18,D,2018-19,D
+Huddersfield,1,2017-18,D,2018-19,E
+Southampton,2,2017-18,D,2018-19,D
+Manchester City,3,2018-19,A,2019-20,A
+Liverpool,1,2018-19,A,2019-20,A
+Chelsea,1,2018-19,A,2019-20,A
+Tottenham,1,2018-19,A,2019-20,B
+Arsenal,1,2018-19,B,2019-20,B
+Manchester Utd,1,2018-19,B,2019-20,A
+Wolves,3,2018-19,B,2019-20,B
+Everton,1,2018-19,B,2019-20,C
+Leicester City,3,2018-19,C,2019-20,B
+West Ham,3,2018-19,C,2019-20,D
+Watford,3,2018-19,C,2019-20,E
+Crystal Palace,3,2018-19,C,2019-20,D
+Newcastle,3,2018-19,C,2019-20,C
+Bournemouth,1,2018-19,D,2019-20,E
+Burnley,3,2018-19,D,2019-20,C
+Southampton,2,2018-19,D,2019-20,C
+Brighton,1,2018-19,D,2019-20,D
+Liverpool,1,2019-20,A,2020-21,A
+Manchester City,3,2019-20,A,2020-21,A
+Manchester Utd,1,2019-20,A,2020-21,A
+Chelsea,1,2019-20,A,2020-21,A
+Leicester City,3,2019-20,B,2020-21,B
+Tottenham,1,2019-20,B,2020-21,B
+Wolves,3,2019-20,B,2020-21,C
+Arsenal,1,2019-20,B,2020-21,B
+Sheffield United,2,2019-20,C,2020-21,E
+Burnley,3,2019-20,C,2020-21,D
+Southampton,2,2019-20,C,2020-21,D
+Everton,1,2019-20,C,2020-21,C
+Newcastle,3,2019-20,C,2020-21,C
+Crystal Palace,3,2019-20,D,2020-21,D
+Brighton,1,2019-20,D,2020-21,D
+West Ham,3,2019-20,D,2020-21,B
+Aston Villa,2,2019-20,D,2020-21,C
+Manchester City,3,2020-21,A,2021-22,A
+Manchester Utd,1,2020-21,A,2021-22,B
+Liverpool,1,2020-21,A,2021-22,A
+Chelsea,1,2020-21,A,2021-22,A
+Leicester City,3,2020-21,B,2021-22,B
+West Ham,3,2020-21,B,2021-22,B
+Tottenham,1,2020-21,B,2021-22,A
+Arsenal,1,2020-21,B,2021-22,B
+Leeds United,2,2020-21,C,2021-22,D
+Everton,1,2020-21,C,2021-22,D
+Aston Villa,2,2020-21,C,2021-22,D
+Newcastle,3,2020-21,C,2021-22,C
+Wolves,3,2020-21,C,2021-22,C
+Crystal Palace,3,2020-21,D,2021-22,C
+Southampton,2,2020-21,D,2021-22,D
+Brighton,1,2020-21,D,2021-22,C
+Burnley,3,2020-21,D,2021-22,E
+Manchester City,3,2021-22,A,2022-23,A
+Liverpool,1,2021-22,A,2022-23,B
+Chelsea,1,2021-22,A,2022-23,C
+Tottenham,1,2021-22,A,2022-23,B
+Arsenal,1,2021-22,B,2022-23,A
+Manchester Utd,1,2021-22,B,2022-23,A
+West Ham,3,2021-22,B,2022-23,D
+Leicester City,3,2021-22,B,2022-23,E
+Brighton,1,2021-22,C,2022-23,B
+Wolves,3,2021-22,C,2022-23,C
+Newcastle,3,2021-22,C,2022-23,A
+Crystal Palace,3,2021-22,C,2022-23,C
+Brentford,1,2021-22,C,2022-23,C
+Aston Villa,2,2021-22,D,2022-23,B
+Southampton,2,2021-22,D,2022-23,E
+Everton,1,2021-22,D,2022-23,D
+Leeds United,2,2021-22,D,2022-23,E
+Manchester City,3,2022-23,A,2023-24,A
+Arsenal,1,2022-23,A,2023-24,A
+Manchester Utd,1,2022-23,A,2023-24,B
+Newcastle,3,2022-23,A,2023-24,B
+Liverpool,1,2022-23,B,2023-24,A
+Brighton,1,2022-23,B,2023-24,C
+Aston Villa,2,2022-23,B,2023-24,A
+Tottenham,1,2022-23,B,2023-24,B
+Brentford,1,2022-23,C,2023-24,D
+Fulham,4,2022-23,C,2023-24,C
+Crystal Palace,3,2022-23,C,2023-24,C
+Chelsea,1,2022-23,C,2023-24,B
+Wolves,3,2022-23,C,2023-24,D
+West Ham,3,2022-23,D,2023-24,C
+Bournemouth,2,2022-23,D,2023-24,C
+Nottingham,3,2022-23,D,2023-24,D
+Everton,1,2022-23,D,2023-24,D
+Manchester City,3,2023-24,A,2024-25,A
+Arsenal,1,2023-24,A,2024-25,A
+Liverpool,1,2023-24,A,2024-25,A
+Aston Villa,2,2023-24,A,2024-25,B
+Tottenham,1,2023-24,B,2024-25,D
+Chelsea,1,2023-24,B,2024-25,A
+Newcastle,3,2023-24,B,2024-25,B
+Manchester Utd,1,2023-24,B,2024-25,D
+West Ham,3,2023-24,C,2024-25,D
+Crystal Palace,3,2023-24,C,2024-25,C
+Brighton,1,2023-24,C,2024-25,B
+Bournemouth,2,2023-24,C,2024-25,C
+Fulham,4,2023-24,C,2024-25,C
+Wolves,3,2023-24,D,2024-25,D
+Everton,1,2023-24,D,2024-25,C
+Brentford,1,2023-24,D,2024-25,C
+Nottingham,3,2023-24,D,2024-25,B
+Liverpool,1,2024-25,A,2025-26,B
+Arsenal,1,2024-25,A,2025-26,A
+Manchester City,3,2024-25,A,2025-26,A
+Chelsea,1,2024-25,A,2025-26,C
+Newcastle,3,2024-25,B,2025-26,C
+Aston Villa,2,2024-25,B,2025-26,A
+Nottingham,3,2024-25,B,2025-26,D
+Brighton,1,2024-25,B,2025-26,B
+Bournemouth,2,2024-25,C,2025-26,B
+Brentford,1,2024-25,C,2025-26,C
+Fulham,4,2024-25,C,2025-26,C
+Crystal Palace,3,2024-25,C,2025-26,D
+Everton,1,2024-25,C,2025-26,C
+West Ham,3,2024-25,D,2025-26,E
+Manchester Utd,1,2024-25,D,2025-26,A
+Wolves,3,2024-25,D,2025-26,E
+Tottenham,1,2024-25,D,2025-26,D

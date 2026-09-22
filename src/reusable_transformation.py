@@ -204,11 +204,11 @@ assert master["Tier"].value_counts().sort_index().to_dict() == expected_tier_cou
 # No               Yes
 # same spell       new spell
 
-season_club = master.sort_values(by=["Club","Season"])
-print(season_club.head())
-print(season_club.tail())
-print(season_club.shape)
-print(master[master["Club"] == "Arsenal"][["Club", "Season"]]) # Pay Attention
+# season_club = master.sort_values(by=["Club","Season"])
+# print(season_club.head())
+# print(season_club.tail())
+# print(season_club.shape)
+# print(master[master["Club"] == "Arsenal"][["Club", "Season"]]) # Pay Attention
 # single bracket: master["Club"] returns a pandas Series
 # 1D Series:
 # 0 Arsenal
@@ -276,12 +276,12 @@ master["Previous_Season"] = master.groupby("Club")["Season_Start"].shift(1) # ma
 # master.groupby("Club")["Season_Start"] -> take "Season_Start" within each club
 # master.groupby("Club")["Season_Start"].shift(1) -> moves the values down one row !!!within each club!!! shift(1) means previous row
 
-print(
-    master.loc[
-        master["Club"] == "Leeds United",                      # Rows
-        ["Club", "Season", "Season_Start", "Previous_Season"]  # Columns
-    ]
-)
+# print(
+#     master.loc[
+#         master["Club"] == "Leeds United",                      # Rows
+#         ["Club", "Season", "Season_Start", "Previous_Season"]  # Columns
+#     ]
+# )
 
 # Status Check:
 # print(master.head())
@@ -293,24 +293,24 @@ master["New_Spell"] = (master["Previous_Season"].isna() | ((master["Season_Start
 # Use "|" or "&" to express logical or, logical and.
 
 # Status Check:
-print(
-    master.loc[
-        master["Club"] == "Leeds United",
-        ["Club", "Season", "Season_Start", "Previous_Season", "New_Spell"]
-    ]
-)
+# print(
+#     master.loc[
+#         master["Club"] == "Leeds United",
+#         ["Club", "Season", "Season_Start", "Previous_Season", "New_Spell"]
+#     ]
+# )
 
 # We need to group by club to avoid increment throughout the whole master dataframe
 master["Spell_ID"] = (master.groupby("Club")["New_Spell"].cumsum()) # Cumulative Sum: True -> 1 / False -> 0
 # Cumulatively added the boolean value at each row. True increments the spell nubmer; False keeps it unchanged
 
 # Status Check:
-print(
-    master.loc[
-        master["Spell_ID"] > 1,
-        ["Club", "Season", "Season_Start", "Previous_Season", "New_Spell", "Spell_ID"]
-    ].head(20)
-)
+# print(
+#     master.loc[
+#         master["Spell_ID"] > 1,
+#         ["Club", "Season", "Season_Start", "Previous_Season", "New_Spell", "Spell_ID"]
+#     ].head(20)
+# )
 
 assert master.groupby("Club")["Spell_ID"].min().eq(1).all() # Checks that every club starts at spell 1
 
@@ -408,6 +408,79 @@ saved = pd.read_csv(output_path)
 assert saved.shape == master.shape
 assert list(saved.columns) == list(master.columns)
 
+
+# Step 10: Create transition dataset
+
+transition = pd.read_csv(output_path)
+
+# Keep only required columns
+transition = transition[["Club", "Spell_ID", "Season", "Tier"]]
+
+# Rename "Tier" to "Current_Tier"
+transition = transition.rename(
+    columns= {
+        "Tier" : "Current_Tier"
+    }
+)
+
+# Get next season and next tier within the SAME spell (Group by both Club and Spell_ID to avoid shift in different spell)
+transition["Next_Season"] = transition.groupby(["Club", "Spell_ID"])["Season"].shift(-1)
+transition["Next_Tier"] = transition.groupby(["Club", "Spell_ID"])["Current_Tier"].shift(-1)
+
+
+# We noticed the last season has no next season, so there is no transition for these rows
+# Transition database only contain valid transitions
+# So we need to drop the invalid rows
+
+# Inspection:
+# print(
+#     transition[
+#         transition["Next_Season"].isna()
+#     ].head(20)
+# )
+
+# Actual Dropping:
+transition = transition.dropna(
+    subset=["Next_Season", "Next_Tier"]  # drop the rows in which contains null value in specified columns
+).reset_index(drop=True)
+
+# Verification:
+# print(transition.head())
+# print(transition.tail())
+# print(transition.shape)
+
+
+#########################
+# Final validate:
+expected_transition_columns = [
+    "Club",
+    "Spell_ID",
+    "Season",
+    "Current_Tier",
+    "Next_Season",
+    "Next_Tier"
+]
+
+assert list(transition.columns) == expected_transition_columns
+
+assert transition["Next_Season"].isna().sum() == 0
+assert transition["Next_Tier"].isna().sum() == 0
+
+# Checks if all the rows represent a one-season step
+current_start = transition["Season"].str[:4].astype(int)
+next_start = transition["Next_Season"].str[:4].astype(int)
+
+assert (next_start - current_start == 1).all()
+
+# Validate the row count structurally
+num_spells = master.groupby(["Club", "Spell_ID"]).ngroups
+
+assert len(transition) == len(master) - num_spells
+
+# Save it
+transition_path = PROCESSED_DIR / "epl_transitions.csv"
+
+transition.to_csv(transition_path, index=False)
 
 # Step by step
 
