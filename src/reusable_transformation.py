@@ -482,6 +482,99 @@ transition_path = PROCESSED_DIR / "epl_transitions.csv"
 
 transition.to_csv(transition_path, index=False)
 
+# Verification:
+# print(transition.head())
+# print(transition.tail())
+# print(transition.shape)  # According to the shape of the transition dataframe, we know that there are 510 transitions in total.
+
+# One row represents one valid transition
+
+# Now we need to count each type of transition while we iterate through transition dataset.
+
+# Example transition matrix:
+#  -    A      B      C      D      E
+#  A P(A|A) P(B|A) P(C|A) P(D|A) P(E|A)
+#  B ...
+#  C ... 
+#  D ... 
+#  E ...                         P(E|E) undefined
+
+# Transition Probability:
+# P(A|A) = A -> A transition count / transition starting from A count
+
+# In this way, we need to get: # of times that transition starting from a certain Tier, A -> ? count respectively
+
+# Try to find the # of times that transition starting from A:
+transition_tiers = transition.groupby("Current_Tier").size()
+# print(test)
+# Result:
+# Current_Tier
+# A    120
+# B    120
+# C    150
+# D    120
+# dtype: int64
+
+# So # of times that transition starting from A is 120
+# Try to find # of times transition from A to B:
+# a_to_b = (
+#     (transition["Current_Tier"] == "A")
+#     & (transition["Next_Tier"] == "B")
+# ).sum()
+
+# print(a_to_b)
+
+# a_total = (transition["Current_Tier"] == "A").sum()
+# p_a_to_b = a_to_b / a_total
+# print(p_a_to_b)
+# transition[(transition["Current_Tier"] == "A") & (transition["Next_Tier"] == "B")]
+
+# However, it's too tedious to calculate all kinds of transition one by one
+
+# Find the different transitions:
+transition_counts = transition.groupby(["Current_Tier", "Next_Tier"]).size()
+print(transition_counts)
+
+# Calculate the transition probabilities:
+transition_probabilities = (
+    transition_counts
+    / transition_counts.groupby(level="Current_Tier").transform("sum") # transition_counts has 2 layers, level=0 means the layer of current_tier
+) # For each group, calculate the sum and return that sum for every row in the group.
+# Check:
+print(transition_counts.groupby(level="Current_Tier").transform("sum"))
+# transition_counts is MultiIndex, so is the denominator
+
+# Current_Tier Next_Tier 
+# A            A          70
+#              B          25
+#              ...        ...
+# B            A          50
+#              B          45
+#              ...        ...
+
+
+# print(transition_probabilities)
+
+# Turn it into a matrix:
+transition_matrix = transition_probabilities.unstack(
+    fill_value=0
+)
+
+print(transition_matrix)
+print(transition_matrix.sum(axis=1)) # checks if the sum of the conditional probabilities is 1
+assert transition_matrix.sum(axis=1).round(10).eq(1).all()
+
+
+# We get the transition matrix
+
+
+
+
+
+
+
+
+
 # Step by step
 
 # 1. Validate all 31 raw csv files [Checked]
